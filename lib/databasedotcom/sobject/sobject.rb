@@ -102,7 +102,7 @@ module Databasedotcom
       def save(options={})
         attr_hash = {}
         selection_attr = self.Id.nil? ? "createable" : "updateable"
-        self.class.description["fields"].select { |f| f[selection_attr] }.collect { |f| f["name"] }.each { |attr| attr_hash[attr] = self.send(attr) }
+        self.class.description["fields"].select { |f| f[selection_attr] }.collect { |f| f["name"] }.each { |attr| puts "Attrbute = #{attr}"; attr_hash[attr] = self.send(attr) }
 
         # allow fields to be removed on a case by case basis as some data is not allowed to be saved 
         # (e.g. Name field on Account with record type of Person Account) despite the API listing 
